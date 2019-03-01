@@ -44,7 +44,7 @@ class LinkedinOAuth2(BaseOAuth2):
         )
 
         if 'emailAddress' in set(self.setting('FIELD_SELECTORS', [])):
-            emails = self.email_data(access_token, *args, **kwargs)
+            emails = list(self.email_data(access_token, *args, **kwargs))
             if emails:
                 response['emailAddress'] = emails[0]
 
